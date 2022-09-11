@@ -1,0 +1,29 @@
+<div class="form-control">
+    <label>Day</label>
+    <input
+      type="text"
+      [formControl]="dayControl"
+      (blur)="onTouched()"
+      (input)="onTouched()"
+    />
+  </div>
+  
+  <div class="form-control">
+    <label>Month</label>
+    <input
+      type="text"
+      [formControl]="monthControl"
+      (blur)="onTouched()"
+      (input)="onTouched()"
+    />
+  </div>
+  
+  <div class="form-control">
+    <label>Year</label>
+    <input
+      type="text"
+      [formControl]="yearControl"
+      (blur)="onTouched()"
+      (input)="onTouched()"
+    />
+  </div>
