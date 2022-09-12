@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CustomControlsModule } from './custom-controls/custom-controls.module';
 import { DirectivesModule } from './directives/directives.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { DirectivesModule } from './directives/directives.module';
     CustomControlsModule,
     FormsModule,
     ReactiveFormsModule,
-    DirectivesModule
+    DirectivesModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -13,6 +13,8 @@ import {
 } from '@angular/core';
 @Directive({
   selector: '[appBetterHighlight]',
+  // selector: 'divselect',
+  // selector: 'divselect[appBetterHighlight]',
 })
 export class BasicHighlightDirective implements OnInit {
   @Input() defaultColor: string = 'transparent';
