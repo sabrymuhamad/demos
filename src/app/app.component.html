@@ -4,4 +4,8 @@
   <p>Selected date: {{ this.reactiveForm.controls.dateControl.value | date: "fullDate" }}</p>
   <button>Submit</button>
 </form>
+
+<div appBetterHighlight [defaultColor]="'green'" [highlightColor]="'brown'">
+  Hightlight directive
+</div>
 <router-outlet></router-outlet>

@@ -5,6 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CustomControlsModule } from './custom-controls/custom-controls.module';
+import { DirectivesModule } from './directives/directives.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { CustomControlsModule } from './custom-controls/custom-controls.module';
     AppRoutingModule,
     CustomControlsModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DirectivesModule
   ],
   providers: [],
   bootstrap: [AppComponent]
