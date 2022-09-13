@@ -4,16 +4,25 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: 'custom-controls',
-    loadChildren: () => import('./custom-controls/custom-controls.module').then(m => m.CustomControlsModule)
-  }, {
+    loadChildren: () =>
+      import('./custom-controls/custom-controls.module').then(
+        (m) => m.CustomControlsModule
+      ),
+  },
+  {
+    path: 'shared',
+    loadChildren: () =>
+      import('./shared/shared.module').then((m) => m.SharedModule),
+  },
+  {
     path: '',
     redirectTo: 'custom-controls',
-    pathMatch: 'full'
-  }
+    pathMatch: 'full',
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
