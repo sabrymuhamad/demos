@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, HostListener } from '@angular/core';
+import { Router } from '@angular/router';
+import { fromEvent } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -7,14 +8,53 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+  // @HostListener('window:unload', ['$event'])
+  // beforeunloadHandler(event:any): void {
+  //  localStorage.removeItem('ssss')
+  // }
+
+  @HostListener("window:beforeunload", ["$event"]) unloadHandler(event: Event) {
+    console.log("Processing beforeunload...");
+
+}
+
   title = 'demos';
-  isActive: boolean = false;
+  constructor(private router: Router) {
 
-  reactiveForm = new FormGroup({
-    dateControl: new FormControl(new Date(), [Validators.required]),
-  });
+    // this.expirationCheck();
+    fromEvent(window, 'load').subscribe((res) => {
 
-  submit() {
-    console.log(this.reactiveForm.value);
+      console.log('load')
+   
+      // let user = sessionStorage.getItem('user');
+      // console.log(user)
+      // if (user) {
+      //   this.router.navigate(['/shared/401'])
+      // } else {
+      //   sessionStorage.setItem('user', JSON.stringify({ name: 'sabry', id: 1 }))
+      // }
+
+    })
   }
+
+  setSession() {
+    let user = sessionStorage.getItem('user')
+    if (!user) {
+      sessionStorage.setItem('user', JSON.stringify({ name: 'sabry', id: 1 }))
+    }
+  }
+
+  expirationCheck() {
+    let storage = localStorage.getItem('expiry');
+
+    if (!storage) {
+      let ex = new Date(new Date().getTime() + 5 * 60000);
+      localStorage.setItem('expiry', JSON.stringify(ex))
+    }
+
+  }
+
+
+  // solution is to store the token in sessionStorage
+
 }

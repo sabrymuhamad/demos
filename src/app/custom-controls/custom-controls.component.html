@@ -1,0 +1,25 @@
+<form (ngSubmit)="submit()" [formGroup]="reactiveForm">
+    <h2>Usage with ReactiveFormsModule</h2>
+    <app-datepicker formControlName="dateControl" required></app-datepicker>
+    <p>
+      Selected date:
+      {{ this.reactiveForm.controls.dateControl.value | date: "fullDate" }}
+    </p>
+    <button>Submit</button>
+  </form>
+  
+  <div appBetterHighlight defaultColor="green" highlightColor="brown">
+    Hightlight directive
+  </div>
+  
+  <div *appUnless="isActive">Unless structural directive</div>
+  
+  <ng-container> NG CONTAINER </ng-container>
+  
+  <ng-template> NG TEMPLATE </ng-template>
+  
+  <app-any-component>
+    <div class="para1">11111</div>
+    <div class="para2">22222</div>
+    <div class="para3">3333</div>
+  </app-any-component>
