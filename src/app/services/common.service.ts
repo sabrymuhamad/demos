@@ -71,6 +71,12 @@ export class CommonService {
     );
   }
 
+  startWithOp(){
+    of(1,2,3,4).pipe(startWith(3)).subscribe((res)=>{
+      console.log(res)
+    })
+  }
+
   mergeMap() {
     // It creates a new inner observable for every value it receives from the Source observable
 
