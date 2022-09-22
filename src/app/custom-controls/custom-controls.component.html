@@ -1,8 +1,6 @@
 <form (ngSubmit)="submit()" [formGroup]="reactiveForm">
     <h2>Usage with ReactiveFormsModule</h2>
     <app-datepicker (keyup)="onFocus($event)" formControlName="dateControl" required></app-datepicker>
-    <app-custom-input [(ngModel)]="customInput" name="customInput"></app-custom-input>
-    <h3>{{customInput}}</h3>
     <p>
       Selected date:
       {{ this.reactiveForm.controls.dateControl.value | date: "fullDate" }}
@@ -10,6 +8,9 @@
     <button>Submit</button>
   </form>
   
+    <app-custom-input type="number" [(ngModel)]="customInput" name="customInput"></app-custom-input>
+    <h3>{{customInput}}</h3>
+
   <div appBetterHighlight defaultColor="green" highlightColor="brown">
     Hightlight directive
   </div>

@@ -16,10 +16,8 @@ import { combineLatest } from 'rxjs';
   ],
 })
 export class CustomInputComponent implements OnInit, ControlValueAccessor {
-  public readonly inputValue = new FormControl(0, [
-    Validators.required,
-    Validators.min(1),
-    Validators.max(100),
+  public readonly inputValue = new FormControl('', [
+    Validators.required
   ]);
 
   constructor() { }
@@ -34,7 +32,7 @@ export class CustomInputComponent implements OnInit, ControlValueAccessor {
   }
 
       /** Return a Date if the fields are ready or null otherwise */
-      private _getValue(): number | null {
+      private _getValue(): string | null {
         try {
           if (
             this.inputValue.invalid)
@@ -48,8 +46,8 @@ export class CustomInputComponent implements OnInit, ControlValueAccessor {
         }
       }
 
-  private _onChange = (_value: number | null): void => undefined;
-  public registerOnChange(fn: (value: number | null) => void): void {
+  private _onChange = (_value: string | null): void => undefined;
+  public registerOnChange(fn: (value: string | null) => void): void {
     this._onChange = fn;
   }
 
@@ -59,7 +57,7 @@ export class CustomInputComponent implements OnInit, ControlValueAccessor {
     this.onTouched = fn;
   }
 
-  public writeValue(value: number | null): void {
+  public writeValue(value: string | null): void {
     if (value) {
       this.inputValue.setValue(value);
     } else {
