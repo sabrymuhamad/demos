@@ -1,0 +1,9 @@
+<div class="form-control">
+  <label>Label</label>
+  <input
+    type="text"
+    [formControl]="inputValue"
+    (blur)="onTouched()"
+    (input)="onTouched()"
+  />
+</div>

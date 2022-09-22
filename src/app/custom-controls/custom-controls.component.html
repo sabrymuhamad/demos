@@ -1,6 +1,8 @@
 <form (ngSubmit)="submit()" [formGroup]="reactiveForm">
     <h2>Usage with ReactiveFormsModule</h2>
-    <app-datepicker formControlName="dateControl" required></app-datepicker>
+    <app-datepicker (keyup)="onFocus($event)" formControlName="dateControl" required></app-datepicker>
+    <app-custom-input [(ngModel)]="customInput" name="customInput"></app-custom-input>
+    <h3>{{customInput}}</h3>
     <p>
       Selected date:
       {{ this.reactiveForm.controls.dateControl.value | date: "fullDate" }}

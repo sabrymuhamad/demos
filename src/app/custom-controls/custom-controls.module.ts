@@ -7,12 +7,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CustomControlsComponent } from './custom-controls.component';
 import { SharedModule } from '../shared/shared.module';
 import { DirectivesModule } from '../directives/directives.module';
+import { CustomInputComponent } from './custom-input/custom-input.component';
 
 
 @NgModule({
   declarations: [
     DatepickerComponent,
-    CustomControlsComponent
+    CustomControlsComponent,
+    CustomInputComponent
   ],
   imports: [
     CommonModule,
@@ -22,6 +24,6 @@ import { DirectivesModule } from '../directives/directives.module';
     SharedModule,
     DirectivesModule
   ],
-  exports: [DatepickerComponent]
+  exports: [DatepickerComponent, CustomInputComponent]
 })
 export class CustomControlsModule { }

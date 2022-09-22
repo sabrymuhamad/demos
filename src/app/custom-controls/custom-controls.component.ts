@@ -7,7 +7,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./custom-controls.component.scss']
 })
 export class CustomControlsComponent implements OnInit {
-
+  customInput:string;
   constructor() { }
 
   ngOnInit(): void {
@@ -21,6 +21,10 @@ export class CustomControlsComponent implements OnInit {
 
   submit() {
     console.log(this.reactiveForm.value);
+  }
+
+  onFocus(e:any){
+    console.log(e)
   }
 
 }
