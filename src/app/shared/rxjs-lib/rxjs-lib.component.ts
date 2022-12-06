@@ -15,6 +15,6 @@ export class RxjsLibComponent implements OnInit {
     //   complete: () => console.log('Complete!')
     // });
 
-    this.common.startWithOp();
+    this.common.combinLatestOp();
   }
 }

@@ -13,6 +13,7 @@ import {
   pipe,
   range,
   timer,
+  combineLatest,
 } from 'rxjs';
 import {
   catchError,
@@ -33,7 +34,7 @@ import {
   providedIn: 'root',
 })
 export class CommonService {
-  constructor() {}
+  constructor() { }
 
   pipe() {
     /* For example, RxJS defines operators such as map(), filter(), concat(), and flatMap().
@@ -71,8 +72,8 @@ export class CommonService {
     );
   }
 
-  startWithOp(){
-    of(1,2,3,4).pipe(startWith(3)).subscribe((res)=>{
+  startWithOp() {
+    of(1, 2, 3, 4).pipe(startWith(3)).subscribe((res) => {
       console.log(res)
     })
   }
@@ -188,5 +189,39 @@ export class CommonService {
     subject.next({ age: 30 });
     // {name: 'Joe', age: 30, favoriteLanguage: 'JavaScript'}
     subject.next({ favoriteLanguage: 'JavaScript' });
+  }
+
+  combinLatestOp() {
+    // timerOne emits first value at 1s, then once every 4s
+    const timerOne$ = timer(1000, 4000);
+    // timerTwo emits first value at 2s, then once every 4s
+    const timerTwo$ = timer(2000, 4000);
+    // timerThree emits first value at 3s, then once every 4s
+    const timerThree$ = timer(3000, 4000);
+
+
+    // when one timer emits, emit the latest values from each timer as an array
+    combineLatest([timerOne$, timerTwo$, timerThree$])
+    .pipe(take(1),
+    switchMap(([timerOne, timerTwo, timerThree])=>{
+      console.log(timerOne)
+      return of(false)
+    })
+    ).subscribe()
+    // .subscribe(
+    //   ([timerValOne, timerValTwo, timerValThree]) => {
+    //     /*
+    //       Example:
+    //     timerThree first tick: 'Timer One Latest: 0, Timer Two Latest: 0, Timer Three Latest: 0
+    //     timerOne second tick: 'Timer One Latest: 1, Timer Two Latest: 0, Timer Three Latest: 0
+    //     timerTwo second tick: 'Timer One Latest: 1, Timer Two Latest: 1, Timer Three Latest: 0
+    //   */
+    //     console.log(
+    //       `Timer One Latest: ${timerValOne},
+    //         Timer Two Latest: ${timerValTwo},
+    //         Timer Three Latest: ${timerValThree}`
+    //     );
+    //   }
+    // );
   }
 }
